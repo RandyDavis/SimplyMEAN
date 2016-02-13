@@ -1,0 +1,1 @@
+Repo for SimplyMEAN mean stack demo app
