@@ -6,9 +6,24 @@
     <link rel="stylesheet" href="css/foundation.min.css">
     <link rel="stylesheet" href="css/app.css">
 </head>
-<body ng-app="">
-    <div class="row" ng-controller="ServiceCtrl">
-        <h1>Hello World from Static HTML</h1>
+<body ng-app="app">
+    <div class="row" ng-controller="ServicesCtrl as vm">
+        <div class="small-12 columns">
+            <h1>Service Client Maker</h1>
+            <table class="hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {{vm.message}}
+                    <tr ng-repeat="serviceClient in vm.serviceClients">
+                        <td>{{serviceClient.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <script src="js/vendor/jquery.min.js"></script>
