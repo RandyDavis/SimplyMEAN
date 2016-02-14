@@ -14,6 +14,15 @@
                 <thead>
                     <tr>
                         <th>Name</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" ng-model="vm.serviceClient.name">
+                        </td>
+                        <td>
+                            <button type="button" class="button hollow success" ng-click="vm.create()">Add</button>
+                        </td>
                     </tr>
                 </thead>
                 <tbody>

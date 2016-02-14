@@ -1,23 +1,25 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
+var mongojs = require('mongojs');
+var db = mongojs("mongodb://simplymeanuser:testing123@ds061385.mongolab.com:61385/simplymean", ["serviceClients"]);
 
 app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.json());
 
 app.get('/serviceClients', function (req, res) {
-    var vm = this;
-    var svc1 = {
-        name: "linkedIn"
-    };
-    var svc2 = {
-        name: "Rotten Tomatoes"
-    };
-    var svc3 = {
-        name: "IMDB"
-    };
+    db.serviceClients.find(function (err, docs) {
+        res.json(docs);
+    });
+});
 
-    var serviceClients = [svc1, svc2, svc3];
-    vm.serviceClients = serviceClients;
-    res.json(serviceClients);
+app.post('/serviceClients', function (req, res) {
+    var svc = req.body;
+    console.log(svc);
+
+    db.serviceClients.insert(svc, function (err, doc) {
+        res.json(doc);
+    });
 });
 
 app.listen(3000);
