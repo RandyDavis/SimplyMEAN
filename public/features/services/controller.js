@@ -10,6 +10,7 @@
         vm.message = "hello from controller";
         vm.renderServiceClients = renderServiceClients;
         vm.create = create;
+        vm.all = all;
 
         function renderServiceClients (response) {
             vm.serviceClients = response;
@@ -24,11 +25,16 @@
                 .catch(function(error) {
                     console.log(error);
                 })
+            vm.all();
         }
 
         // get all
-        $http.get('/serviceClients')
-            .success(vm.renderServiceClients);
+        function all () {
+            $http.get('/serviceClients')
+                .success(vm.renderServiceClients);
+        }
+
+        vm.all();
 
     }
 
