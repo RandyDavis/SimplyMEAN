@@ -11,6 +11,7 @@
         vm.renderServiceClients = renderServiceClients;
         vm.create = create;
         vm.all = all;
+        vm.remove = remove;
 
         function renderServiceClients (response) {
             vm.serviceClients = response;
@@ -32,6 +33,19 @@
         function all () {
             $http.get('/serviceClients')
                 .success(vm.renderServiceClients);
+        }
+
+        // delete
+        function remove (id) {
+            $http.delete('/serviceClients/' + id)
+                .then(function (response) {
+                    vm.all();
+                    console.log(id);
+                })
+                .catch(function(error) {
+                    console.log(error);
+                })
+
         }
 
         vm.all();

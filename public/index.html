@@ -29,6 +29,9 @@
                 {{vm.message}}
                     <tr ng-repeat="serviceClient in vm.serviceClients">
                         <td>{{serviceClient.name}}</td>
+                        <td>
+                            <button class="button hollow alert small" ng-click="vm.remove(serviceClient._id)">Delete</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>

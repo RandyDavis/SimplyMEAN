@@ -22,4 +22,12 @@ app.post('/serviceClients', function (req, res) {
     });
 });
 
+app.delete('/serviceClients/:id', function (req, res) {
+    var id = req.params.id;
+    console.log(id);
+    db.serviceClients.remove({_id : mongojs.ObjectId(id)}, function (err, doc) {
+        res.json(doc);
+    });
+});
+
 app.listen(3000);
