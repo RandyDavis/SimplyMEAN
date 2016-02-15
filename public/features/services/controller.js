@@ -12,6 +12,8 @@
         vm.create = create;
         vm.all = all;
         vm.remove = remove;
+        vm.select = select;
+        //vm.update = update;
 
         function renderServiceClients (response) {
             vm.serviceClients = response;
@@ -45,8 +47,23 @@
                 .catch(function(error) {
                     console.log(error);
                 })
-
         }
+
+        function select (id) {
+            console.log(id);
+            $http.get('/serviceClients/' + id)
+                .then(function (response) {
+                    //console.log(response);
+                    vm.serviceClient = response;
+                })
+                .catch(function(error) {
+                    console.log(error);
+                })
+        }
+
+        //function update () {
+        //    console.log(vm.serviceClient);
+        //}
 
         vm.all();
 

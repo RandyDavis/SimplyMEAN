@@ -21,7 +21,8 @@
                             <input type="text" ng-model="vm.serviceClient.name">
                         </td>
                         <td>
-                            <button type="button" class="button hollow success" ng-click="vm.create()">Add</button>
+                            <button type="button" class="button hollow success small" ng-click="vm.create()">Add</button>
+                            <!--<button class="button warning small" ng-click="vm.update()" >Update</button>-->
                         </td>
                     </tr>
                 </thead>
@@ -31,6 +32,7 @@
                         <td>{{serviceClient.name}}</td>
                         <td>
                             <button class="button hollow alert small" ng-click="vm.remove(serviceClient._id)">Delete</button>
+                            <button class="button hollow warning small" ng-click="vm.select(serviceClient._id)">Select</button>
                         </td>
                     </tr>
                 </tbody>
