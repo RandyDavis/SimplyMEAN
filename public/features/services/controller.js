@@ -13,7 +13,7 @@
         vm.all = all;
         vm.remove = remove;
         vm.select = select;
-        //vm.update = update;
+        vm.update = update;
 
         function renderServiceClients (response) {
             vm.serviceClients = response;
@@ -61,9 +61,10 @@
                 })
         }
 
-        //function update () {
-        //    console.log(vm.serviceClient);
-        //}
+        function update () {
+            console.log(vm.serviceClient);
+            $http.put('/serviceClients/' + vm.serviceClient._id, vm.serviceClient)
+        }
 
         vm.all();
 

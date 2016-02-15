@@ -30,12 +30,23 @@ app.delete('/serviceClients/:id', function (req, res) {
     });
 });
 
-app.get("/serviceClients/:id", function (req, res) {
+app.get('/serviceClients/:id', function (req, res) {
     var id = req.params.id;
     console.log(id);
     db.serviceClients.findOne({ _id: mongojs.ObjectId(id)}, function (err, doc) {
         res.json(doc);
     });
+});
+
+app.put('/serviceClients/:id', function (req, res) {
+    console.log(req.body);
+    db.serviceClients.findAndModify(
+        { _id: mongojs.ObjectId(id)},
+        {$set: {name: req.body.name}},
+        function (err, doc) {
+            res.json(doc);
+        }
+    );
 });
 
 app.listen(3000);
